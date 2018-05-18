@@ -10,10 +10,11 @@ MFRC522 Lector1(SS_PIN, RST_PIN); ///Creamos el objeto para el RC522 al cual lla
 const char* ssid = "AMCOM_3";
 const char* password = "4MC0MS4_2017";
 
-const char* host = "192.168.0.10";
+const char* host = "192.168.0.12";
 const int httpsPort = 8000;
 
 const int id = 1;
+const int ruta = 1;
 
 void setup() {
   Serial.begin(115200); //Iniciamos La comunicacion serial
@@ -73,7 +74,7 @@ void loop() {
       Serial.print("requesting URL: ");
       Serial.println(url);
 
-      String data = "tarjeta="+UID_string+"&id="+id;
+      String data = "tarjeta="+UID_string+"&ruta="+ruta;
 
         client.print(String("POST ") + url + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" +
